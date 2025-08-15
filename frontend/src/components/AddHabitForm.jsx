@@ -6,31 +6,24 @@ function AddHabitForm({ onHabitCreated }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name) {
-      alert('Please enter a habit name');
-      return;
-    }
-
+    if (!name) return;
     habitService.createHabit({ name })
       .then(newHabit => {
-        onHabitCreated(newHabit); // Notify the parent component
-        setName(''); // Clear the input field
+        onHabitCreated(newHabit);
+        setName('');
       })
-      .catch(error => {
-        console.error("Error creating habit:", error);
-      });
+      .catch(error => console.error("Error creating habit:", error));
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h3>Add a New Habit</h3>
+    <form onSubmit={handleSubmit} className="add-habit-form-content">
       <input
         type="text"
-        placeholder="e.g., Drink water"
+        placeholder="Enter a new habit..."
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-      <button type="submit">Add Habit</button>
+      <button type="submit" className="btn-primary">Add Habit</button>
     </form>
   );
 }

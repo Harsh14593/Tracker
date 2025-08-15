@@ -9,12 +9,16 @@ const habitSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
-  // We will link this to a user later
-  // user: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   required: true,
-  //   ref: 'User',
-  // },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'User',
+  },
+  // Add inside the habitSchema
+  isActive: {
+    type: Boolean,
+    default: true,
+  },
 }, {
   timestamps: true, // Automatically adds createdAt and updatedAt fields
 });

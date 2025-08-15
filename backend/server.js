@@ -1,39 +1,37 @@
-// Import required packages
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
-// At the top with other imports
 const connectDB = require('./config/db');
+const { errorHandler } = require('./middleware/errorMiddleware');
 
 // Load environment variables
 dotenv.config();
 
-// Connect to the database
+// Connect to MongoDB database
 connectDB();
 
-// ... rest of your server.js code
-
-// Load environment variables
-dotenv.config();
-
-// Initialize the Express app
 const app = express();
 
-// Set up middleware
-app.use(cors()); // Enable Cross-Origin Resource Sharing
-app.use(express.json()); // Allow the server to accept JSON in request bodies
-// ... after app.use(express.json())
-app.use('/api/habits', require('./routes/habitRoutes'));
+// Core Middleware
+app.use(cors());
+app.use(express.json()); // Allows the server to accept JSON in the request body
 
-// A simple test route to make sure the server is working
+// API Routes
+app.use('/api/users', require('./routes/userRoutes'));
+app.use('/api/ai', require('./routes/aiRoutes'));
+
+// Simple test route for the root URL
 app.get('/', (req, res) => {
-  res.send('Gamified Habit Tracker API is running!');
+  res.send('AI Study Planner API is running...');
 });
 
-// Define the port the server will run on
+// Use the custom error handler
+// This should be the last piece of middleware
+app.use(errorHandler);
+
+
 const PORT = process.env.PORT || 5000;
 
-// Start the server
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });

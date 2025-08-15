@@ -1,0 +1,183 @@
+/* --- 1. Design System: Clean & Formal --- */
+:root {
+  /* Color Palette */
+  --bg-main: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --border-color: #dee2e6;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --accent-primary: #0d6efd; /* A standard, professional blue */
+  --accent-hover: #0b5ed7;
+  --danger-color: #dc3545;
+  
+  /* Sizing & Effects */
+  --border-radius: 8px;
+  --transition: all 0.2s ease-in-out;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+/* --- 2. Global Reset & Body --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* --- 3. Page & Container Layout --- */
+.page-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+/* --- 4. Authentication Pages --- */
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.auth-form {
+  width: 100%;
+  max-width: 420px;
+  padding: 32px;
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+.auth-header h1 { font-size: 1.75rem; font-weight: 600; }
+.auth-header p { color: var(--text-secondary); }
+
+/* --- 5. General Form Elements --- */
+.form-group { margin-bottom: 16px; }
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+input[type="text"], input[type="email"], input[type="password"], select {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  color: var(--text-primary);
+  transition: var(--transition);
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn { width: 100%; }
+.btn-primary { background-color: var(--accent-primary); color: white; }
+.btn-primary:hover { background-color: var(--accent-hover); }
+.btn-secondary {
+  background-color: var(--bg-main);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+.btn-secondary:hover { background-color: var(--bg-secondary); }
+.btn-danger {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--danger-color);
+}
+.btn-danger:hover { background-color: rgba(220, 53, 69, 0.1); }
+
+/* --- 6. Dashboard Layout --- */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 32px;
+}
+.dashboard-header h1 { font-size: 2rem; font-weight: 700; }
+
+.add-habit-form { margin-bottom: 32px; }
+.add-habit-form-content { display: flex; gap: 16px; }
+.add-habit-form-content input { flex-grow: 1; }
+
+/* --- 7. Habit List & Item Cards --- */
+.habits-list { list-style-type: none; }
+.habit-card {
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.habit-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+.habit-card-header h3 { font-size: 1.25rem; font-weight: 600; }
+
+.log-form {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+}
+.log-form select { flex-grow: 1; }
+
+/* --- 8. Pagination --- */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+}
+.pagination-controls button:disabled { opacity: 0.6; cursor: not-allowed; }
