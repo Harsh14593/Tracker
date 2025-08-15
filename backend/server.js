@@ -28,6 +28,7 @@ app.get('/', (req, res) => {
 // Use the custom error handler
 // This should be the last piece of middleware
 app.use(errorHandler);
+app.use('/api/plans', require('./routes/studyPlanRoutes'));
 
 
 const PORT = process.env.PORT || 5000;
