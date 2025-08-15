@@ -27,15 +27,15 @@ function Register() {
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>Name</label>
-            <input type="text" name="name" onChange={handleChange} required />
+            <input type="text" name="name" value={formData.name} onChange={handleChange} required />
           </div>
           <div className="form-group">
             <label>Email</label>
-            <input type="email" name="email" onChange={handleChange} required />
+            <input type="email" name="email" value={formData.email} onChange={handleChange} required />
           </div>
           <div className="form-group">
             <label>Password</label>
-            <input type="password" name="password" minLength="6" required />
+            <input type="password" name="password" value={formData.password} onChange={handleChange} minLength="6" required />
           </div>
           <button type="submit" className="btn btn-primary" style={{ marginTop: '8px' }}>Create Account</button>
         </form>

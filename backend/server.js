@@ -14,11 +14,12 @@ const app = express();
 
 // Core Middleware
 app.use(cors());
-app.use(express.json()); // Allows the server to accept JSON in the request body
+app.use(express.json());
 
 // API Routes
 app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/ai', require('./routes/aiRoutes'));
+app.use('/api/plans', require('./routes/studyPlanRoutes')); // MOVED TO HERE
 
 // Simple test route for the root URL
 app.get('/', (req, res) => {
@@ -26,10 +27,8 @@ app.get('/', (req, res) => {
 });
 
 // Use the custom error handler
-// This should be the last piece of middleware
+// This MUST be the last piece of middleware
 app.use(errorHandler);
-app.use('/api/plans', require('./routes/studyPlanRoutes'));
-
 
 const PORT = process.env.PORT || 5000;
 
