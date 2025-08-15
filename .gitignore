@@ -1,0 +1,11 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+
+# Environment Variables - very important!
+.env
+backend/.env
+frontend/.env
+
+# Build output folder for React
+frontend/dist/
