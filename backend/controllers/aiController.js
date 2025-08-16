@@ -9,12 +9,11 @@ const generateStudyPlan = async (req, res) => {
   // 1. The Simple Calculated Field (still works)
   const today = dayjs();
   const endDate = dayjs(targetDate);
-  const numberOfWeeks = endDate.diff(today, 'week') || 4; // Default to 4 weeks if date is invalid
+  const numberOfWeeks = endDate.diff(today, 'week') || 4;
   const totalStudyHours = numberOfWeeks * timeCommitment;
 
   try {
     // 2. MOCK AI RESPONSE
-    // Instead of calling the Google API, we create a realistic, pre-written response.
     console.log("--- USING MOCKED AI RESPONSE ---");
     const mockApiResponse = {
       plan: [
@@ -41,14 +40,6 @@ const generateStudyPlan = async (req, res) => {
             "Create RESTful API endpoints for GET and POST requests.",
             "Connect your server to your MongoDB database with Mongoose."
           ]
-        },
-        {
-            week: "Week 4: Full-Stack Integration & Review",
-            tasks: [
-              "Connect your React frontend to your Node.js backend.",
-              "Review key concepts of Data Structures.",
-              "Practice a mock behavioral interview."
-            ]
         }
       ]
     };
@@ -56,7 +47,7 @@ const generateStudyPlan = async (req, res) => {
     // 3. Simulate API delay to make it feel real
     await new Promise(resolve => setTimeout(resolve, 1500)); 
 
-    // 4. Format and Save to Database (same as before)
+    // 4. Format and Save to Database
     const formattedPlan = mockApiResponse.plan.map(week => ({
       week: week.week,
       tasks: week.tasks.map(taskString => ({ task: taskString, is_completed: false }))
