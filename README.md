@@ -6,7 +6,7 @@ An intelligent, full-stack web application designed to help students and aspirin
 
 ## Live Demo
 
-https://tracker-6gi6w5i6s-hrash-jhas-projects.vercel.app/
+https://tracker-git-main-hrash-jhas-projects.vercel.app?_vercel_share=8eHLcw1uzUyfcevDDewStbqi4fvGpmeF
 
 ---
 
